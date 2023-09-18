@@ -1,4 +1,6 @@
 import NextPlayer from "./NextPlayer";
+import BidForm from "./BidForm";
+import BidTable from "./BidTable";
 
 export type Player = {
   id: number;
@@ -72,27 +74,16 @@ async function getPlayers() {
   return players;
 }
 
-// export async function Players() {
-//   const players = await getPlayers();
-//   const playerItems = players.map((player) => ({
-//     value: player.id.toString(),
-//     label: player.web_name,
-//   }));
-//   return (
-//     <div className="h-100">
-//       <PlayerSelect playerItems={playerItems} />
-//     </div>
-//   );
-// }
-
-// export default Players;
-
 export default async function Home() {
   const players = await getPlayers();
 
   return (
     <main className="flex flex-col items-center justify-between min-h-screen p-24">
       <NextPlayer players={players} />
+      <BidForm />
+      <BidTable
+        bids={[{ roundId: "1", amount: 1100, id: "1", user: "Laurie" }]}
+      />
     </main>
   );
 }

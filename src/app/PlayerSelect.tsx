@@ -1,5 +1,5 @@
 "use client";
-import { on } from "events";
+import { getPosition } from "./utils";
 import type { Player } from "./page";
 
 type PlayerSelectProps = {
@@ -20,7 +20,7 @@ export default function PlayerSelect({
     <select onChange={handlePlayerSelect}>
       {players.map((player) => (
         <option key={player.id} value={player.id}>
-          {player.element_type} | {player.web_name} | {player.team}
+          {getPosition(player.element_type)} | {player.web_name} | {player.team}
         </option>
       ))}
     </select>
