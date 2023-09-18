@@ -1,6 +1,6 @@
 export type Bid = {
   id: string;
-  amount: number;
+  amount: number | "?";
   user: string;
   roundId: string;
 };
@@ -30,7 +30,7 @@ export function getBids() {
     return {
       ...bid,
       amount: "?",
-    };
+    } as Bid;
   });
 }
 
